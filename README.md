@@ -15,7 +15,20 @@ Code must be writted in Javascript language. The code will be tested with Node8,
 ```
 Answer:
 ```
--- insert your answer here
+const shift = (arr,direction,n) =>{
+  const x = arr.length
+  if(direction==='left'){
+      for(i=0;i<n;i++){
+        arr.push(arr.shift())
+      }
+  }else {
+      for(i=0;i<n;i++){
+        arr.unshift(arr.pop())
+      }
+    }
+      return arr
+}
+console.log(shift(['john', 'jane', 'sarah', 'alex'], 'left', 3))
 ```
 2. Download [hero.json](https://github.com/takemetour/job-quest-intern-2018/blob/master/hero.json) and write a code to caculate these values from **hero.json**
 - 2.1 Average **networth** of all heroes

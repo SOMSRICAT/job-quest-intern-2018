@@ -14,7 +14,7 @@ Code must be writted in Javascript language. The code will be tested with Node8,
 [3, 4, 5, 1, 2]
 ```
 Answer:
-```
+```javascript
 const shift = (arr,direction,n) =>{
   const x = arr.length
   if(direction==='left'){
@@ -37,8 +37,33 @@ console.log(shift(['john', 'jane', 'sarah', 'alex'], 'left', 3))
 - 2.4 Find the hero who got the worst **kill/death ratio** (ratio = kill/death)
 
 Answer:
-```
--- insert your answer here
+```javascript
+var json  = require('./hero.json')
+
+const findAvgNetworth = (arr) =>{
+    const Avg = arr.map((item,index)=> item.networth).reduce((a,b)=> a+b)/arr.length
+    return Avg
+}
+
+const findAvgLevel = (arr) => {
+    const intel = arr.filter((obj)=> obj.primary_attribute == 'intelligent')
+    const Avg = intel.map((item,index)=> item.level).reduce((a,b)=> a+b)/intel.length
+    return Avg
+}
+
+const findMostAssist = (arr) => {
+    const most = arr.reduce( (a,b)=> {
+      return  a.assist > b.assist ? a : b
+    })
+    return most
+}
+
+const findWrostRatio = (arr) =>{
+    const wrost = arr.reduce((x,y)=> {
+      return (x.kill/x.death) < (y.kill/y.death) ? x : y
+    })
+    return wrost
+}
 ```
 
 ## Simple Web Application: A joke from Chuck Norris.

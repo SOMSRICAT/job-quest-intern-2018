@@ -29,6 +29,7 @@ const shift = (arr,direction,n) =>{
       return arr
 }
 console.log(shift(['john', 'jane', 'sarah', 'alex'], 'left', 3))
+console.log(shift([1, 2, 3, 4 ,5], 'right', 3))
 ```
 2. Download [hero.json](https://github.com/takemetour/job-quest-intern-2018/blob/master/hero.json) and write a code to caculate these values from **hero.json**
 - 2.1 Average **networth** of all heroes
@@ -38,17 +39,25 @@ console.log(shift(['john', 'jane', 'sarah', 'alex'], 'left', 3))
 
 Answer:
 ```javascript
-var json  = require('./hero.json')
+const json  = require('./hero.json')
 
 const findAvgNetworth = (arr) =>{
-    const Avg = arr.map((item,index)=> item.networth).reduce((a,b)=> a+b)/arr.length
-    return Avg
+    const Avg = arr.map((item)=> item.networth)
+    let res=0;
+    for(i=0;i<Avg.length;i++){
+        res += Avg[i]
+    }
+    return res/arr.length
 }
 
 const findAvgLevel = (arr) => {
     const intel = arr.filter((obj)=> obj.primary_attribute == 'intelligent')
-    const Avg = intel.map((item,index)=> item.level).reduce((a,b)=> a+b)/intel.length
-    return Avg
+    const Avg = intel.map((item)=> item.level)
+    let res = 0
+    for(i=0;i<intel.length;i++){
+        res += Avg[i]
+    }
+    return res/intel.length
 }
 
 const findMostAssist = (arr) => {
@@ -64,6 +73,12 @@ const findWrostRatio = (arr) =>{
     })
     return wrost
 }
+
+
+console.log("Average networth is " + findAvgNetworth(json))
+console.log("Average level intelligent hero is " + findAvgLevel(json))
+console.log("Most assist is " + findMostAssist(json).name)
+console.log("Wrost kill/death ratio is " + findWrostRatio(json).name)
 ```
 
 ## Simple Web Application: A joke from Chuck Norris.
@@ -91,11 +106,11 @@ A1: <insert your answer here>
 
 Q2: Please explain how javascript benefits from cross-platform development
 
-A2: <insert your answer here>
+A2: เพราะ JavaScript สามารถในการทำงานข้ามระบบได้เพียงแค่ติดตั้ง Java Runtime ทำให้ผู้พัฒนาสามารถที่จะพัฒนาเทคโนโลยีต่างๆได้ในทุกระบบ ปัจจุบันมี Framework ถูกพัฒนาออกอย่างมากมายเพื่อเอื้อประโยชน์กับ JavaScript ให้มีประสิทธิภาพมากขึ้นโดยเฉพาะ NodeJS ที่ใช้เทคโนโลยี Non-blocking ทำให้ประมวลผลได้เร็วเป็นอย่างมากและเมื่อรวมกับความสามารถที่ทำงานข้ามระบบจึงทำให้ JavaScript มีประโยชน์อย่างมากกับการพัฒนาเทคโนโลยีข้าวแพลตฟอร์ม
 
 Q3: What do you expect to get from during an internship at TakeMeTour?
 
-A3: <insert your answer here>
+A3: ผมคาดหวังจะได้สัมผัสกับการทำงานในสถานะการณ์จริงกับบริษัท Startup สมัยใหม่ และพัฒนาฝีมือพร้อมทั้งเรียนรู้การเขียน JavaScript ร่วมกับพี่ๆทีม Developer ที่มากประสบการณ์ อีกทั้งที่ TakeMeTour มีความยืดหยุ่นในการเข้าออกงาน การแต่งกาย ที่ให้พักผ่อน ที่ผมเคยคิดว่าที่สถานที่แบบนี้คงหาไม่ได้ในไทย (ที่เห็นก็มีที่ Google) และคิดว่าที่ TakeMeTour จะมีพี่ๆที่ใจดีทำให้มีความสุขระหว่างทำงานครับ (และอยากลองเล่น PS4 ที่นั่นด้วยครับ)
 
 ## Submitting
 

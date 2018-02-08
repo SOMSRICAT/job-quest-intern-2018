@@ -1,14 +1,22 @@
-var json  = require('./hero.json')
+const json  = require('./hero.json')
 
 const findAvgNetworth = (arr) =>{
-    const Avg = arr.map((item,index)=> item.networth).reduce((a,b)=> a+b)/arr.length
-    return Avg
+    const Avg = arr.map((item)=> item.networth)
+    let res=0;
+    for(i=0;i<Avg.length;i++){
+        res += Avg[i]
+    }
+    return res/arr.length
 }
 
 const findAvgLevel = (arr) => {
     const intel = arr.filter((obj)=> obj.primary_attribute == 'intelligent')
-    const Avg = intel.map((item,index)=> item.level).reduce((a,b)=> a+b)/intel.length
-    return Avg
+    const Avg = intel.map((item)=> item.level)
+    let res = 0
+    for(i=0;i<intel.length;i++){
+        res += Avg[i]
+    }
+    return res/intel.length
 }
 
 const findMostAssist = (arr) => {
@@ -26,7 +34,7 @@ const findWrostRatio = (arr) =>{
 }
 
 
-console.log("Average networth is " + findAvgNetworth(json).toFixed(2))
-console.log("Average level intelligent hero is " + findAvgLevel(json).toFixed(2))
+console.log("Average networth is " + findAvgNetworth(json))
+console.log("Average level intelligent hero is " + findAvgLevel(json))
 console.log("Most assist is " + findMostAssist(json).name)
 console.log("Wrost kill/death ratio is " + findWrostRatio(json).name)
